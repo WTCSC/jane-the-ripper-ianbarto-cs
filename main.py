@@ -15,7 +15,8 @@ def main():
     elif algorithm == "sha1":
         sha1(hash_file_path, wordlist_path)
     else:
-        print("You did not")
+        print("You did not input a valid hashing algorithm. Please try again.")
+        main()
     
 
 def md5(hash_file_path, wordlist_path):
@@ -63,8 +64,5 @@ def sha1(hash_file_path, wordlist_path):
             if not found:
                 print(f"[-] Failed -- > {hash_to_check} \n")
             
-                
-    
-
 if __name__ == "__main__":
     main()
