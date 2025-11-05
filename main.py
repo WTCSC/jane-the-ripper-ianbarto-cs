@@ -1,6 +1,7 @@
 from hashlib import md5
 from hashlib import sha256
 from hashlib import sha1
+from hashlib import sha512
 import hashlib
 
 
@@ -14,6 +15,8 @@ def main():
         sha256(hash_file_path, wordlist_path)
     elif algorithm == "sha1":
         sha1(hash_file_path, wordlist_path)
+    elif algorithm == "sha512":
+        sha512(hash_file_path, wordlist_path)
     else:
         print("You did not input a valid hashing algorithm. Please try again.")
         main()
@@ -57,6 +60,21 @@ def sha1(hash_file_path, wordlist_path):
             with open(wordlist_path)as f:
                 for line in f:
                     hashed_words = hashlib.sha1(line.strip().encode())
+                    words_hex = hashed_words.hexdigest()
+                    if words_hex == hash_line.strip():
+                        print(f"[+] Cracked {words_hex} --> {line}")
+                        found = True
+            if not found:
+                print(f"[-] Failed -- > {hash_to_check} \n")
+
+def sha512(hash_file_path, wordlist_path):
+    with open(hash_file_path) as r:
+        for hash_line in r:
+            found = False
+            hash_to_check = hash_line.strip()
+            with open(wordlist_path)as f:
+                for line in f:
+                    hashed_words = hashlib.sha512(line.strip().encode())
                     words_hex = hashed_words.hexdigest()
                     if words_hex == hash_line.strip():
                         print(f"[+] Cracked {words_hex} --> {line}")

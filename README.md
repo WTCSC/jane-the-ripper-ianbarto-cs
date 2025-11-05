@@ -10,7 +10,7 @@ If a match is found, it prints the cracked hash and the corresponding plaintext 
 
 ## ✨ Features
 
-* Supports three common hashing algorithms: **MD5**, **SHA256**, and **SHA1**.
+* Supports four common hashing algorithms: **MD5**, **SHA256**, **SHA512** and **SHA1**.
 * Interactive command-line prompts for ease of use.
 * Reports successfully cracked hashes and failures in real-time.
 * Built entirely with standard Python libraries (no `pip install` required).
